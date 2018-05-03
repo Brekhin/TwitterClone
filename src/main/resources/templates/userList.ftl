@@ -1,21 +1,23 @@
 <#import "parts/common.ftl" as c />
 <@c.page>
-    List of users
+List of users
 <table>
     <thead>
-        <tr>
-            <th>Name</th>
-            <th>Role</th>
-            <th></th>
-        </tr>
-    </thead>
-</table>
-<#list users as user>
     <tr>
-        <th>${user.username}</th>
-        <th><#list user.roles as role>${role}<#sep>, </#list></th>
-        <td><a href="/user{id}">Edit</a></td>
+        <th>Name</th>
+        <th>Role</th>
+        <th></th>
     </tr>
+    </thead>
+    <tbody>
 
-</#list>
+        <#list users as user>
+        <tr>
+            <td>${user.username}</td>
+            <td><#list user.roles as role>${role}<#sep>, </#list></td>
+            <td><a href="/user/${user.id}">Edit</a></td>
+        </tr>
+        </#list>
+    </tbody>
+</table>
 </@c.page>

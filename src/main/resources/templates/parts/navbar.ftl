@@ -1,5 +1,5 @@
 <#include "security.ftl">
-
+<#import "login.ftl" as l>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">Twitter Clone</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,6 +20,7 @@
             </li>
             </#if>
         </ul>
-        <div class="navbar-text">${name}</div>
+        <div class="navbar-text mr-3">${name}</div>
+        <@l.logout />
     </div>
 </nav>

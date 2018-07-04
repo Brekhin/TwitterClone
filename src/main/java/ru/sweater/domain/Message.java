@@ -1,9 +1,11 @@
 package ru.sweater.domain;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 
 @Entity
@@ -34,6 +36,9 @@ public class Message{
         this.author = author;
     }
 
+    // поле не должно быть пустым
+    @NotBlank(message = "Please fill the message")
+    @Length(max = 2048, message = "Message too long")
     private String text;
 
     public String getFilename() {
@@ -57,6 +62,8 @@ public class Message{
         return author != null ? author.getUsername() : "<Autor not found>";
     }
 
+    @NotBlank(message = "Please fill the tag")
+    @Length(max = 255, message = "Message too long")
     private String tag;
 
     public String getText() {
